@@ -1,0 +1,10 @@
+node_modules
+.gradle
+.cocoapods
+dist
+coverage
+build
+localConfig.js
+storyLoader.js
+apidocs
+**/docs/*
