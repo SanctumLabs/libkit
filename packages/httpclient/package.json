@@ -1,0 +1,24 @@
+{
+  "name": "@sanctumlabs/httpclient",
+  "version": "0.0.1",
+  "description": "HttpClient library",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "files": [
+    "src",
+    "!.DS_Store",
+    "!**/__tests__",
+    "!**/__mocks__",
+    "!**/*.test.ts"
+  ],
+  "dependencies": {
+    "axios-mock-adapter": "^1.20.0"
+  },
+  "peerDependencies": {
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "@sanctumlabs/config": "workspace:*",
+    "axios": "^1.6.2"
+  }
+}

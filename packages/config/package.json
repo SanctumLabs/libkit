@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "@sanctumlabs/config",
+  "version": "0.0.1",
+  "description": "Private configs",
+  "main": "./index.js",
+  "license": "UNLICENSED",
+  "files": [
+    "index.js",
+    "configs"
+  ],
+  "devDependencies": {
+    "find-yarn-workspace-root": "^2.0.0"
+  }
+}

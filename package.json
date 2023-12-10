@@ -1,12 +1,12 @@
 {
   "name": "libkit",
   "packageManager": "yarn@4.0.2",
-  "workspaces":[
+  "workspaces": [
     "packages/*",
     "shared/*"
   ],
   "devDependencies": {
-    "@types/jest": "^29.5.10",
+    "@types/jest": "^29.5.11",
     "@types/node": "^20.10.1",
     "eslint": "^8.54.0",
     "husky": "^8.0.3",
