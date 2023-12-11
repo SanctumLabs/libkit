@@ -1,0 +1,39 @@
+{
+  "name": "@sanctumlabs/toolkit",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "yarn yo test",
+    "format": "yarn yo format",
+    "check": "yarn yo check",
+    "lint": "yarn yo lint",
+    "types": "yarn yo types"
+  },
+  "files": [
+    "src",
+    "!.DS_Store",
+    "!**/__tests__",
+    "!**/__mocks__",
+    "!**/*.test.ts"
+  ],
+  "devDependencies": {
+    "@sanctumlabs/config": "workspace:*",
+    "@types/lodash": "^4.14.202",
+    "lodash": "^4.17.21"
+  },
+  "rnx-kit": {
+    "kitType": "library",
+    "alignDeps": {
+      "capabilities": [
+        "lodash"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.21"
+  },
+  "dependencies": {
+    "url": "^0.11.3"
+  }
+}

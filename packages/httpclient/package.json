@@ -12,6 +12,7 @@
     "!**/*.test.ts"
   ],
   "dependencies": {
+    "@sanctumlabs/toolkit": "workspace:^",
     "axios-mock-adapter": "^1.20.0"
   },
   "peerDependencies": {
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@sanctumlabs/config": "workspace:*",
+    "@types/axios": "^0.14.0",
     "axios": "^1.6.2"
   }
 }

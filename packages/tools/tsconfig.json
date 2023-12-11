@@ -1,0 +1,8 @@
+{
+  "extends": "@sanctumlabs/config/base/tsconfig.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist"
+  }
+}
