@@ -1,7 +1,7 @@
 {
-  "name": "@sanctumlabs/httpclient",
+  "name": "@sanctumlabs/apiclient",
   "version": "0.0.1",
-  "description": "HttpClient library",
+  "description": "API Client library",
   "main": "src/index.ts",
   "license": "UNLICENSED",
   "files": [

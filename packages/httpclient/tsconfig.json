@@ -1,5 +1,5 @@
 {
-  "extends": "@sacntumlabs/config/base/tsconfig.json",
+  "extends": "@sanctumlabs/config/base/tsconfig.json",
   "include": ["src/**/*"],
   "compilerOptions": {
     "baseUrl": ".",

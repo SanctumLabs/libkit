@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { defaultClientConfigurer } from './configurer';
 
 const axiosInstance = (baseUrl: string) => axios.create({
   baseURL: baseUrl,
@@ -19,9 +20,12 @@ export default class RestClient {
    * Creates an instance of RestClient with the underlying 3rd party Rest client.
    * a base url is required for instantiation.
    * @param baseURL BaseURL that will be used when performing requests to a service/server
+   * @param configurer configures the Rest client
    */
-  public constructor(baseURL: string) {
-    this.axiosInstance = axiosInstance(baseURL);
+  public constructor(baseURL: string, configurer = defaultClientConfigurer) {
+    const instance = axiosInstance(baseURL);
+    configurer?.(instance, defaultClientConfigurer);
+    this.axiosInstance = instance;
   }
 
   /**
@@ -81,6 +85,20 @@ export default class RestClient {
   ): Promise<AxiosResponse<T>> {
     const response = await this.axiosInstance.patch<T>(path, data, config);
     return response;
+  }
+
+  /**
+   * Performs a DELETE operation on a resource on the API
+   * @param path Path of request
+   * @param config optional configuration to send with request
+   * @returns Response type returned from request
+   */
+  async delete<T>(
+    path: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    const response = await this.axiosInstance.delete<T>(path, config);
+    return response
   }
 
   /**
