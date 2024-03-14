@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { defaultClientConfigurer } from './configurer';
+import { BaseClientOptions } from './types';
 
 const axiosInstance = (baseUrl: string) => axios.create({
   baseURL: baseUrl,
@@ -9,7 +10,8 @@ const axiosInstance = (baseUrl: string) => axios.create({
 /**
  * RestClient that provides HTTP functionality to interact with REST protocol services.
  * Usage:
- * const restClient = new RestClient("http://api.example.com")
+ * @example
+ * const restClient = new RestClient({baseURL: "http://api.example.com"})
  * await const data = restClient.get("/some-path")
  * // do something with data
  */
@@ -22,9 +24,9 @@ export default class RestClient {
    * @param baseURL BaseURL that will be used when performing requests to a service/server
    * @param configurer configures the Rest client
    */
-  public constructor(baseURL: string, configurer = defaultClientConfigurer) {
+  public constructor({ baseURL, configure = defaultClientConfigurer }: BaseClientOptions) {
     const instance = axiosInstance(baseURL);
-    configurer?.(instance, defaultClientConfigurer);
+    configure?.(instance, defaultClientConfigurer);
     this.axiosInstance = instance;
   }
 
