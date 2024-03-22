@@ -27,7 +27,7 @@
     "test": "yarn yo test",
     "format": "prettier . --write",
     "check": "yarn yo check",
-    "lint": "yarn yo lint",
+    "lint": "eslint",
     "types": "yarn yo types"
   }
 }
