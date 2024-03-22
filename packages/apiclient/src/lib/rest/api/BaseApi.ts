@@ -15,10 +15,10 @@ export default abstract class BaseApi {
   delete: any;
 
   public constructor(restClient: RestClient) {
-    this.get = restClient.get
-    this.post = restClient.post
-    this.put = restClient.put
-    this.patch = restClient.patch
-    this.delete = restClient.delete
+    this.get = restClient.get;
+    this.post = restClient.post;
+    this.put = restClient.put;
+    this.patch = restClient.patch;
+    this.delete = restClient.delete;
   }
 }

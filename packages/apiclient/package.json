@@ -12,8 +12,7 @@
     "!**/*.test.ts"
   ],
   "dependencies": {
-    "@sanctumlabs/toolkit": "workspace:^",
-    "axios-mock-adapter": "^1.20.0"
+    "@sanctumlabs/toolkit": "workspace:^"
   },
   "peerDependencies": {
     "axios": "^1.6.2"
@@ -21,6 +20,14 @@
   "devDependencies": {
     "@sanctumlabs/config": "workspace:*",
     "@types/axios": "^0.14.0",
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "axios-mock-adapter": "^1.20.0"
+  },
+  "scripts": {
+    "test": "yarn yo test",
+    "format": "prettier . --write",
+    "check": "yarn yo check",
+    "lint": "yarn yo lint",
+    "types": "yarn yo types"
   }
 }

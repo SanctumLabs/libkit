@@ -1,11 +1,12 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { defaultClientConfigurer } from './configurer';
-import { BaseClientOptions } from './types';
+import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {defaultClientConfigurer} from './configurer';
+import {BaseClientOptions} from '../types';
 
-const axiosInstance = (baseUrl: string) => axios.create({
-  baseURL: baseUrl,
-  responseType: 'json',
-});
+const axiosInstance = (baseUrl: string) =>
+  axios.create({
+    baseURL: baseUrl,
+    responseType: 'json',
+  });
 
 /**
  * RestClient that provides HTTP functionality to interact with REST protocol services.
@@ -24,7 +25,7 @@ export default class RestClient {
    * @param baseURL BaseURL that will be used when performing requests to a service/server
    * @param configurer configures the Rest client
    */
-  public constructor({ baseURL, configure = defaultClientConfigurer }: BaseClientOptions) {
+  public constructor({baseURL, configure = defaultClientConfigurer}: BaseClientOptions) {
     const instance = axiosInstance(baseURL);
     configure?.(instance, defaultClientConfigurer);
     this.axiosInstance = instance;
@@ -95,12 +96,9 @@ export default class RestClient {
    * @param config optional configuration to send with request
    * @returns Response type returned from request
    */
-  async delete<T>(
-    path: string,
-    config?: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
+  async delete<T>(path: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     const response = await this.axiosInstance.delete<T>(path, config);
-    return response
+    return response;
   }
 
   /**

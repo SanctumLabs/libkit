@@ -1,5 +1,5 @@
 import {AxiosError, AxiosInstance, AxiosResponse, AxiosRequestConfig} from 'axios';
-import { resolveURL } from '@sanctumlabs/toolkit';
+import {resolveURL} from '@sanctumlabs/toolkit';
 
 /**
  * Is an error instance actually an `AxiosError`?
@@ -20,9 +20,11 @@ export function isAxiosError(error?: unknown): error is AxiosError {
 export function displayAxiosConfig(
   instance: AxiosInstance,
   responseOrConfig: AxiosResponse | AxiosRequestConfig,
-) : string {
+): string {
   const config =
-    'config' in responseOrConfig ? (responseOrConfig.config as AxiosRequestConfig) : responseOrConfig;
+    'config' in responseOrConfig
+      ? (responseOrConfig.config as AxiosRequestConfig)
+      : responseOrConfig;
   const response = 'config' in responseOrConfig ? responseOrConfig : undefined;
   const requestID = (config as any)._requestID;
   const humanRequestID = requestID !== undefined ? `(${requestID}) ` : '';

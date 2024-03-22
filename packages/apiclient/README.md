@@ -1,4 +1,4 @@
 # API Client
 
-HTTP Client library that provides a http client to interface with APIs that understand the HTTP protocol. Useful to use when an application needs
-to setup a REST client for interacting with a RESTful API.
+API Client library that provides a API clients to interface with APIs. Useful to use when an application needs
+to setup an API client for interacting with a Backend APIs.

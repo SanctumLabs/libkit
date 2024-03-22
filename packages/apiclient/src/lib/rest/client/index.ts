@@ -1,3 +1,3 @@
-import RestClient from "./RestClient";
+import RestClient from './RestClient';
 
-export default RestClient
+export default RestClient;

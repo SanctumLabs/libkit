@@ -1,12 +1,12 @@
-import { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
-import { fullURL } from '../utils';
-import { acceptLanguageHeaderValues } from '@sanctumlabs/toolkit';
+import {AxiosInstance, InternalAxiosRequestConfig} from 'axios';
+import {fullURL} from '../utils';
+import {acceptLanguageHeaderValues} from '@sanctumlabs/toolkit';
 
 export type LanguageHeaderInterceptorOptions = {
-    currentLanguages: () => ReadonlyArray<string>;
-    urlPredicate: (url: string) => boolean;
-  };
-  
+  currentLanguages: () => ReadonlyArray<string>;
+  urlPredicate: (url: string) => boolean;
+};
+
 /**
  * Axios interceptor to log API requests, responses, and errors.
  *
@@ -18,27 +18,27 @@ export type LanguageHeaderInterceptorOptions = {
  * @param instance - Axios instance.
  */
 export function languageHeaderInterceptor(
-    options: LanguageHeaderInterceptorOptions,
-    instance: AxiosInstance,
-  ) {
-    const {currentLanguages, urlPredicate} = options;
-  
-    instance.interceptors.request.use(
-      async (config: InternalAxiosRequestConfig) => {
-        if (urlPredicate(fullURL(instance, config))) {
-          const weightedLangs = acceptLanguageHeaderValues(currentLanguages());
-          if (weightedLangs.length > 0) {
-            if (!config.headers) {
-                // @ts-ignore
-              config.headers = {};
-            }
-            config.headers['Accept-Language'] = weightedLangs.join(', ');
+  options: LanguageHeaderInterceptorOptions,
+  instance: AxiosInstance,
+) {
+  const {currentLanguages, urlPredicate} = options;
+
+  instance.interceptors.request.use(
+    async (config: InternalAxiosRequestConfig) => {
+      if (urlPredicate(fullURL(instance, config))) {
+        const weightedLangs = acceptLanguageHeaderValues(currentLanguages());
+        if (weightedLangs.length > 0) {
+          if (!config.headers) {
+            // @ts-ignore
+            config.headers = {};
           }
+          config.headers['Accept-Language'] = weightedLangs.join(', ');
         }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      },
-    );
-  }
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    },
+  );
+}

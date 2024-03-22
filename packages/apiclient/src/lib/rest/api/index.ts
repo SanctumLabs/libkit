@@ -1,3 +1,3 @@
-import BaseApi from "./BaseApi";
+import BaseApi from './BaseApi';
 
-export default BaseApi
+export default BaseApi;

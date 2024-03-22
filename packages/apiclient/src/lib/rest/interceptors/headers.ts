@@ -1,5 +1,5 @@
-import { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
-import { fullURL } from '../utils';
+import {AxiosInstance, InternalAxiosRequestConfig} from 'axios';
+import {fullURL} from '../utils';
 
 export type AdditionalHeadersInterceptorOptions = {
   headers: () => Record<string, string> | Promise<Record<string, string>>;

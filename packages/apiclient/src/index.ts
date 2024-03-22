@@ -1,1 +1,1 @@
-export * from './lib/rest/client/RestClient';
+export * from './lib/rest';
