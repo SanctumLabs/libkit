@@ -22,6 +22,6 @@
     "pkg:check": "yarn workspace \"$0\" check",
     "pkg:lint": "yarn workspace \"$0\" lint",
     "pkg:types": "yarn workspace \"$0\" types",
-    "pkg:build": "bin/build-package"
+    "pkg:build": "yarn workspace \"$0\" build"
   }
 }

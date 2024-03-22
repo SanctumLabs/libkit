@@ -1,6 +1,6 @@
 {
   "extends": "@sanctumlabs/config/base/tsconfig.json",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tsconfig.types.json"],
   "compilerOptions": {
     "baseUrl": ".",
     "lib": ["ES2015", "ES2020"],
