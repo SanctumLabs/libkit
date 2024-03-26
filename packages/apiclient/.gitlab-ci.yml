@@ -1,0 +1,10 @@
+.base-job:
+  extends: default
+
+lint:
+  stage: lint
+  interruptible: true
+  needs: []
+  script:
+    - bun install
+    - bun run lint

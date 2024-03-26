@@ -1,16 +1,19 @@
 default:
-  # NOTE: This is pinned to 18.17 because 18.18 changed Unicode CLDR versions,
-  # which changed number formatting for en-ZA, breaking tests.
-  image: node:18.17.1-slim
+  image: oven/bun:1.0.3-alpine
   cache:
-    # This uses a fixed cache key because Yarn has an immutable cache
-    # mechanism, and automatically prunes dead items from the cache.
-    - key: 'yarn-cache'
+    - key: 'bun-cache'
       paths:
-        - .yarn
+        - ~/.bun/install/cache
   before_script:
-    - node --version
-    - yarn --version
+    - bun --version
+
+stages:
+  - lint
+  - build
+  - test
+  - analyze
+  - deploy
+  - notification
 
 include:
   - 'packages/apiclient/.gitlab-ci.yml'
