@@ -1,5 +1,7 @@
 # @sanctumlabs/toolkit
 
+Useful re-useable tools and utilities to use in applications and other libraries.
+
 ## Utility functions that can be useful
 
 :::caution
