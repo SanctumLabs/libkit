@@ -1,10 +1,26 @@
 .base-job:
   extends: default
 
-lint:
+api-client-lint:
+  extends: .base-job
   stage: lint
   interruptible: true
   needs: []
   script:
     - bun install
     - bun run lint
+
+api-client-build:
+  extends: .base-job
+  stage: build
+  interruptible: true
+  needs:
+    - api-client-lint
+  script:
+    - bun run build
+  artifacts:
+    untracked: false
+    when: on_success
+    expire_in: "30 days"
+    paths:
+      - dist
