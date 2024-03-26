@@ -1,5 +1,8 @@
 .base-job:
   extends: default
+  before_script:
+   - bun install
+   - cd packages/apiclient
 
 api-client-lint:
   extends: .base-job
@@ -7,8 +10,6 @@ api-client-lint:
   interruptible: true
   needs: []
   script:
-    - bun install
-    - cd packages/apiclient
     - bun run lint
 
 api-client-build:
@@ -18,7 +19,6 @@ api-client-build:
   needs:
     - api-client-lint
   script:
-    - cd packages/apiclient
     - bun run build
   artifacts:
     untracked: false
