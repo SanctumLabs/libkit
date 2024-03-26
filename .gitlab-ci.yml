@@ -17,5 +17,5 @@ stages:
 
 include:
   - 'packages/apiclient/.gitlab-ci.yml'
-  - project: sanctumlabs/tools/gitlab-ci
-    file: templates/slack-notification.yml
+  - project: sanctumlabs/tools/ci-workflows
+    file: .gitlab/templates/slack-notification.yml
