@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "@types/sanctumlabs",
+  "version": "0.0.1",
+  "description": "Shared SanctumLabs Typescript definitions",
+  "main": "",
+  "types": "index.d.ts",
+  "author": "Brian Lusina <12752833+BrianLusina@users.noreply.github.com>",
+  "license": "UNLICENSED"
+}
