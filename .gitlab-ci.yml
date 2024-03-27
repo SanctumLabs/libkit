@@ -1,4 +1,4 @@
-default:
+.default-job:
   image: oven/bun:1.0.3-alpine
   cache:
     - key: 'bun-cache'
@@ -19,3 +19,20 @@ include:
   - 'packages/apiclient/.gitlab-ci.yml'
   - project: sanctumlabs/tools/ci-workflows
     file: .gitlab/templates/slack-notification.yml
+
+.notification-job:
+  extends: .slack-notifier
+  stage: notification
+  variables:
+    SLACK_DEPLOY_CHANNEL: '#pipelines'
+    SLACK_PRETEXT: ''
+    SLACK_ICON_EMOJI: ':smile:'
+    SLACK_AUTHOR_NAME: 'LibKit'
+    SLACK_FIELD2_SHORT: 'true'
+    SLACK_FIELD3_SHORT: 'true'
+    SLACK_FIELD4_TITLE: 'URL'
+    SLACK_FIELD4_VALUE: 'https://libkit.sanctumlabs.com'
+    SLACK_FIELD5_TITLE: 'Merge Request'
+    SLACK_FIELD5_VALUE: '${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}'
+  inherit:
+    default: false

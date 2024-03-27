@@ -1,5 +1,5 @@
 .base-job:
-  extends: default
+  extends: .default-job
   before_script:
     - bun install
     - cd packages/apiclient
@@ -25,4 +25,21 @@ api-client-build:
     when: on_success
     expire_in: '30 days'
     paths:
-      - dist
+      - ./packages/apiclient/dist
+
+notification-success:
+  extends: .notification
+  variables:
+    SLACK_TEXT: 'Build successful :smil:'
+    SLACK_COLOR: 'good'
+    SLACK_TITLE: 'Successful Build - ApiClient'
+    SLACK_FALLBACK: 'Successful build - ApiClient'
+
+notification-failure:
+  extends: .notification
+  when: on_failure
+  variables:
+    SLACK_TEXT: 'Build failed :sad:'
+    SLACK_COLOR: 'danger'
+    SLACK_TITLE: 'Build failure - ApiClient'
+    SLACK_FALLBACK: 'Build failure - ApiClient'
