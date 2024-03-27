@@ -28,7 +28,7 @@ api-client-build:
       - ./packages/apiclient/dist
 
 notification-success:
-  extends: .notification
+  extends: .notification-job
   variables:
     SLACK_TEXT: 'Build successful :smil:'
     SLACK_COLOR: 'good'
@@ -36,7 +36,7 @@ notification-success:
     SLACK_FALLBACK: 'Successful build - ApiClient'
 
 notification-failure:
-  extends: .notification
+  extends: .notification-job
   when: on_failure
   variables:
     SLACK_TEXT: 'Build failed :sad:'
