@@ -1,8 +1,8 @@
 .base-job:
   extends: default
   before_script:
-   - bun install
-   - cd packages/apiclient
+    - bun install
+    - cd packages/apiclient
 
 api-client-lint:
   extends: .base-job
@@ -23,6 +23,6 @@ api-client-build:
   artifacts:
     untracked: false
     when: on_success
-    expire_in: "30 days"
+    expire_in: '30 days'
     paths:
       - dist

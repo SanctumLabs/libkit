@@ -1,6 +1,6 @@
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, {AxiosInstance} from 'axios';
 import {defaultClientConfigurer} from './configurer';
-import {BaseClientOptions} from '../types';
+import {ApiRequestConfig, ApiResponse, BaseClientOptions} from '../types';
 
 const axiosInstance = (baseUrl: string) =>
   axios.create({
@@ -37,7 +37,7 @@ export default class RestClient {
    * @param config Optional configuration for request
    * @returns Response for get request
    */
-  async get<T>(path: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async get<T>(path: string, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.axiosInstance.get<T>(path, config);
     return response;
   }
@@ -49,11 +49,7 @@ export default class RestClient {
    * @param config optional configuration
    * @returns Response of request
    */
-  async post<T>(
-    path: string,
-    data?: unknown,
-    config?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<T>> {
+  async post<T>(path: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.axiosInstance.post<T>(path, data, config);
     return response;
   }
@@ -65,11 +61,7 @@ export default class RestClient {
    * @param config optional configuration for request
    * @returns response from server/service
    */
-  async put<T>(
-    path: string,
-    data?: unknown,
-    config?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<T>> {
+  async put<T>(path: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.axiosInstance.put<T>(path, data, config);
     return response;
   }
@@ -78,14 +70,10 @@ export default class RestClient {
    * Performs a PATCH operation on request
    * @param {string} path path of request
    * @param {unknown} data optional data to send out with request
-   * @param {AxiosRequestConfig} config optional configuration to send out with request
+   * @param {ApiRequestConfig} config optional configuration to send out with request
    * @returns Response returned with request
    */
-  async patch<T>(
-    path: string,
-    data?: unknown,
-    config?: AxiosRequestConfig,
-  ): Promise<AxiosResponse<T>> {
+  async patch<T>(path: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.axiosInstance.patch<T>(path, data, config);
     return response;
   }
@@ -96,9 +84,13 @@ export default class RestClient {
    * @param config optional configuration to send with request
    * @returns Response type returned from request
    */
-  async delete<T>(path: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  async delete<T>(path: string, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
     const response = await this.axiosInstance.delete<T>(path, config);
     return response;
+  }
+
+  async options<T>(path: string, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
+    return await this.axiosInstance.options<T>(path, config);
   }
 
   /**
