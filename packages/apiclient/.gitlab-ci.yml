@@ -4,20 +4,21 @@
     - bun install
     - cd packages/apiclient
 
-api-client-lint:
+# lint
+apiclient-lint:
   extends: .base-job
   stage: lint
   interruptible: true
-  needs: []
   script:
     - bun run lint
 
-api-client-build:
+# build
+apiclient-build:
   extends: .base-job
   stage: build
   interruptible: true
   needs:
-    - api-client-lint
+    - apiclient-lint
   script:
     - bun run build
   artifacts:
@@ -27,19 +28,50 @@ api-client-build:
     paths:
       - ./packages/apiclient/dist
 
-notification-success:
+# test
+# TODO: setup testing
+# apiclient-test:
+#   extends: .base-job
+#   stage: test
+#   interruptible: true
+#   needs:
+#     - apiclient-build
+#   script:
+#     - bun run test
+
+# package & publish
+apiclient-publish-npm:
+  stage: package
+  extends: .base-job
+  needs:
+    - apiclient-build
+  script:
+    - bun run build
+    - echo @sanctumlabs:registry=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/ > .npmrc
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - npm version ${CI_COMMIT_TAG}
+    - NPM_TOKEN=${CI_JOB_TOKEN} npm publish
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: on_success
+      changes:
+        paths:
+          - packages/apiclient/**/*
+    - when: manual
+
+apiclient-notification-success:
   extends: .notification-job
   variables:
-    SLACK_TEXT: 'Build successful :smil:'
+    SLACK_TEXT: 'Build successful :smile:'
     SLACK_COLOR: 'good'
-    SLACK_TITLE: 'Successful Build - ApiClient'
-    SLACK_FALLBACK: 'Successful build - ApiClient'
+    SLACK_TITLE: 'Successful Build - LibKit - ApiClient'
+    SLACK_FALLBACK: 'Successful build - LibKit - ApiClient'
 
-notification-failure:
+apiclient-notification-failure:
   extends: .notification-job
   when: on_failure
   variables:
     SLACK_TEXT: 'Build failed :sad:'
     SLACK_COLOR: 'danger'
-    SLACK_TITLE: 'Build failure - ApiClient'
-    SLACK_FALLBACK: 'Build failure - ApiClient'
+    SLACK_TITLE: 'Build failure - LibKit - ApiClient'
+    SLACK_FALLBACK: 'Build failure - LibKit - ApiClient'

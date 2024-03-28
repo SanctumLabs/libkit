@@ -36,3 +36,9 @@ export type APIRequestWithBody = <T>(
 export interface Interceptor {
   (instance: AxiosInstance, ...args: any[]): void;
 }
+
+export type AuthType = 'none' | 'user' | 'owner';
+
+export interface AuthFunction {
+  (authType: AuthType): Promise<void> | void;
+}

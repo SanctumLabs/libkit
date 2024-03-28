@@ -28,8 +28,6 @@
     "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
     "postbuild": "rimraf tsconfig.types.tsbuildinfo",
     "format": "prettier . --write",
-    "lint": "eslint",
-    "test": "yarn yo test",
-    "types": "yarn yo types"
+    "lint": "eslint"
   }
 }

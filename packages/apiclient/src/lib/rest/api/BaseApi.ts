@@ -1,6 +1,11 @@
 import RestClient from '../client/RestClient';
-import {APIRequest, APIRequestWithBody} from '../types';
+import { defaultAuthFunction } from '../client/auth';
+import {APIRequest, APIRequestWithBody, AuthFunction} from '../types';
 import {ApiRequestConfig} from '../types';
+
+export interface BaseApiOptions {
+  authFunction?: AuthFunction;
+}
 
 /**
  * BaseApi that can be extended from to provide an API interface for setting up calls to an external API
@@ -33,8 +38,11 @@ export default abstract class BaseApi {
   protected put: APIRequestWithBody;
   protected patch: APIRequestWithBody;
   protected delete: APIRequest;
+  protected options: APIRequest;
 
-  public constructor(restClient: RestClient) {
+  __authFunction: AuthFunction;
+
+  public constructor(restClient: RestClient, options?: BaseApiOptions) {
     const maybeCombineConfig = (config?: ApiRequestConfig) => {
       return typeof this.requestConfig === 'function'
         ? Object.assign({}, config, this.requestConfig(config))
@@ -51,12 +59,14 @@ export default abstract class BaseApi {
     };
 
     this.client = restClient;
+    this.__authFunction = options?.authFunction ?? defaultAuthFunction;
 
     this.get = wrapMethod(restClient.get);
     this.post = wrapBodyMethod(restClient.post);
     this.put = wrapBodyMethod(restClient.put);
     this.patch = wrapBodyMethod(restClient.patch);
     this.delete = wrapMethod(restClient.delete);
+    this.options = wrapMethod(restClient.options)
   }
 
   /**
