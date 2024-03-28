@@ -11,6 +11,7 @@ stages:
   - lint
   - build
   - test
+  - package
   - analyze
   - deploy
   - notification
