@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 6
   cacheKey: 10
 
 "@aashutoshrathi/word-wrap@npm:^1.2.3":
@@ -844,25 +844,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sanctumlabs/apiclient@workspace:packages/apiclient":
+  version: 0.0.0-use.local
+  resolution: "@sanctumlabs/apiclient@workspace:packages/apiclient"
+  dependencies:
+    "@sanctumlabs/config": "workspace:*"
+    "@sanctumlabs/toolkit": "workspace:^"
+    "@types/axios": ^0.14.0
+    axios: ^1.6.2
+    axios-mock-adapter: ^1.20.0
+  peerDependencies:
+    axios: ^1.6.2
+  languageName: unknown
+  linkType: soft
+
 "@sanctumlabs/config@workspace:*, @sanctumlabs/config@workspace:packages/config":
   version: 0.0.0-use.local
   resolution: "@sanctumlabs/config@workspace:packages/config"
   dependencies:
-    find-yarn-workspace-root: "npm:^2.0.0"
-  languageName: unknown
-  linkType: soft
-
-"@sanctumlabs/httpclient@workspace:packages/httpclient":
-  version: 0.0.0-use.local
-  resolution: "@sanctumlabs/httpclient@workspace:packages/httpclient"
-  dependencies:
-    "@sanctumlabs/config": "workspace:*"
-    "@sanctumlabs/toolkit": "workspace:^"
-    "@types/axios": "npm:^0.14.0"
-    axios: "npm:^1.6.2"
-    axios-mock-adapter: "npm:^1.20.0"
-  peerDependencies:
-    axios: ^1.6.2
+    find-yarn-workspace-root: ^2.0.0
   languageName: unknown
   linkType: soft
 
@@ -871,9 +871,9 @@ __metadata:
   resolution: "@sanctumlabs/toolkit@workspace:packages/tools"
   dependencies:
     "@sanctumlabs/config": "workspace:*"
-    "@types/lodash": "npm:^4.14.202"
-    lodash: "npm:^4.17.21"
-    url: "npm:^0.11.3"
+    "@types/lodash": ^4.14.202
+    lodash: ^4.17.21
+    url: ^0.11.3
   peerDependencies:
     lodash: ^4.17.21
   languageName: unknown
@@ -1013,6 +1013,12 @@ __metadata:
   checksum: 703c3cc5bdb2818a16f87019fe4072bfd66489bb300338970260c5b84dd2129595995c41b28773c3b7d9d1a64f36fec59a741629ec466f2aeddad7a9d0c027ac
   languageName: node
   linkType: hard
+
+"@types/sanctumlabs@workspace:packages/types":
+  version: 0.0.0-use.local
+  resolution: "@types/sanctumlabs@workspace:packages/types"
+  languageName: unknown
+  linkType: soft
 
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.3
@@ -2098,12 +2104,12 @@ __metadata:
   linkType: hard
 
 "follow-redirects@npm:^1.15.0":
-  version: 1.15.3
-  resolution: "follow-redirects@npm:1.15.3"
+  version: 1.15.6
+  resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: 60d98693f4976892f8c654b16ef6d1803887a951898857ab0cdc009570b1c06314ad499505b7a040ac5b98144939f8597766e5e6a6859c0945d157b473aa6f5f
+  checksum: 8/a62c378dfc8c00f60b9c80cab158ba54e99ba0239a5dd7c81245e5a5b39d10f0c35e249c3379eae719ff0285fff88c365dd446fab19dee771f1d76252df1bbf5
   languageName: node
   linkType: hard
 
@@ -2163,9 +2169,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@npm%3A^2.3.2#optional!builtin<compat/fsevents>":
+"fsevents@patch:fsevents@npm%3A^2.3.2#~builtin<compat/fsevents>":
   version: 2.3.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.3#optional!builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"
   dependencies:
     node-gyp: "npm:latest"
   conditions: os=darwin
@@ -2772,7 +2778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^29.7.0":
+"jest-diff@npm:^29.0.0, jest-diff@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-diff@npm:29.7.0"
   dependencies:
@@ -2820,7 +2826,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-get-type@npm:^29.6.3":
+"jest-extended@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "jest-extended@npm:4.0.2"
+  dependencies:
+    jest-diff: ^29.0.0
+    jest-get-type: ^29.0.0
+  peerDependencies:
+    jest: ">=27.2.5"
+  peerDependenciesMeta:
+    jest:
+      optional: true
+  checksum: 8/afdc255eec7caa173f9e805e94562273d8b8aa4c7ab9b396668f018c18ea5236270a6ac499ca84b8c60e90ccbe9ccb4aebf998daef13aec9542c426df1df6079
+  languageName: node
+  linkType: hard
+
+"jest-get-type@npm:^29.0.0, jest-get-type@npm:^29.6.3":
   version: 29.6.3
   resolution: "jest-get-type@npm:29.6.3"
   checksum: 88ac9102d4679d768accae29f1e75f592b760b44277df288ad76ce5bf038c3f5ce3719dea8aa0f035dac30e9eb034b848ce716b9183ad7cc222d029f03e92205
@@ -3221,15 +3242,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "libkit@workspace:."
   dependencies:
-    "@types/jest": "npm:^29.5.11"
-    "@types/node": "npm:^20.10.1"
-    eslint: "npm:^8.54.0"
-    husky: "npm:^8.0.3"
-    jest: "npm:^29.7.0"
-    lint-staged: "npm:^15.1.0"
-    prettier: "npm:^3.1.0"
-    ts-jest: "npm:^29.1.1"
-    typescript: "npm:^5.3.2"
+    "@types/jest": ^29.5.11
+    "@types/node": ^20.10.1
+    eslint: ^8.54.0
+    husky: ^8.0.3
+    jest: ^29.7.0
+    jest-extended: ^4.0.2
+    lint-staged: ^15.1.0
+    prettier: ^3.1.0
+    ts-jest: ^29.1.1
+    typescript: ^5.3.2
   languageName: unknown
   linkType: soft
 
@@ -4011,16 +4033,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.20.0#optional!builtin<compat/resolve>":
+"resolve@patch:resolve@npm%3A^1.20.0#~builtin<compat/resolve>":
   version: 1.22.8
-  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#~builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
   dependencies:
     is-core-module: "npm:^2.13.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: f345cd37f56a2c0275e3fe062517c650bb673815d885e7507566df589375d165bbbf4bdb6aa95600a9bc55f4744b81f452b5a63f95b9f10a72787dba3c90890a
+  checksum: 8/5479b7d431cacd5185f8db64bfcb7286ae5e31eb299f4c4f404ad8aa6098b77599563ac4257cb2c37a42f59dfc06a1bec2bcf283bb448f319e37f0feb9a09847
   languageName: node
   linkType: hard
 
@@ -4503,13 +4525,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.3.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@^5.3.2#~builtin<compat/typescript>":
   version: 5.3.2
-  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
+  resolution: "typescript@patch:typescript@npm%3A5.3.2#~builtin<compat/typescript>::version=5.3.2&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
+  checksum: 8/47b2e63418ea7ef7dd0bf359ee41c6fca852c680826089269c5d03673ead471e052b172561f377f9e51212054e5f0fe19dd58085ff7db7b168449a6af704c784
   languageName: node
   linkType: hard
 
